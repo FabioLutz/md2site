@@ -1,12 +1,14 @@
 {
   "name": "md2site",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Converte arquivos Markdown em HTML+CSS em formato de site",
-  "main": "./script/converter.js",
-  "devDependencies": {},
+  "main": "./script/converter.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "FabioLutz",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "markdown-it": "^14.1.0"
+  }
 }
