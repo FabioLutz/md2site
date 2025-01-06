@@ -12,13 +12,24 @@ const paths = {
     script: path.join(rootPath, 'script'),
     markdown: path.join(rootPath, 'markdown'),
     public: path.join(rootPath, 'public'),
+    template: path.join(rootPath, 'template'),
 };
 
 const markdownFile = path.join(paths.markdown, 'file.md');
 const outputFile = path.join(paths.public, 'index.html');
+const templateFile = path.join(paths.template, 'template.html');
 
 const markdownContent = fs.readFileSync(markdownFile, 'utf8');
 
 const htmlContent = markdownIt().render(markdownContent);
 
-fs.writeFileSync(outputFile, htmlContent, 'utf8');
+const replacements = {
+    title: 'Título',
+    content: htmlContent,
+};
+
+const templateContent = fs.readFileSync(templateFile, 'utf8');
+
+const finalHtml = templateContent.replace(/{{(\w+)}}/g, (match, placeholder) => replacements[placeholder] || match);
+
+fs.writeFileSync(outputFile, finalHtml, 'utf8');
