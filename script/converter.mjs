@@ -15,21 +15,31 @@ const paths = {
     template: path.join(rootPath, 'template'),
 };
 
-const markdownFile = path.join(paths.markdown, 'file.md');
-const outputFile = path.join(paths.public, 'index.html');
 const templateFile = path.join(paths.template, 'template.html');
+const markdownFiles = fs.readdirSync(paths.markdown);
 
-const markdownContent = fs.readFileSync(markdownFile, 'utf8');
+markdownFiles.forEach(file => {
+    const content = fs.readFileSync(paths.markdown + '/' + file, 'utf8');
+    const htmlContent = markdownIt().render(content);
 
-const htmlContent = markdownIt().render(markdownContent);
-
-const replacements = {
-    title: 'Título',
-    content: htmlContent,
-};
-
-const templateContent = fs.readFileSync(templateFile, 'utf8');
-
-const finalHtml = templateContent.replace(/{{(\w+)}}/g, (match, placeholder) => replacements[placeholder] || match);
-
-fs.writeFileSync(outputFile, finalHtml, 'utf8');
+    const posicao = file.lastIndexOf('.');
+    const fileName = (posicao !== -1 ? file.substring(0, posicao) : file);
+    
+    const replacements = {
+        title: 'Título',
+        content: htmlContent,
+    };
+    
+    const templateContent = fs.readFileSync(templateFile, 'utf8');
+    
+    const finalHtml = templateContent.replace(
+        /{{(\w+)}}/g,
+        (match, placeholder) => replacements[placeholder] || match
+    );
+    
+    fs.writeFileSync(
+        paths.public + '/' + fileName + '.html',
+        finalHtml,
+        'utf8'
+    );
+});
