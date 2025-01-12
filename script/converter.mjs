@@ -10,23 +10,25 @@ const rootPath = path.join(
 
 const paths = {
     script: path.join(rootPath, 'script'),
+    configFile: path.join(rootPath, 'config.json'),
     markdown: path.join(rootPath, 'markdown'),
     public: path.join(rootPath, 'public'),
     template: path.join(rootPath, 'template'),
 };
 
-const templateFile = path.join(paths.template, 'template.html');
-const markdownFiles = fs.readdirSync(paths.markdown);
+const configContent = fs.readFileSync(paths.configFile);
+const config = JSON.parse(configContent.toString());
 
-markdownFiles.forEach(file => {
-    const content = fs.readFileSync(paths.markdown + '/' + file, 'utf8');
+config.pages.forEach(page => {
+    const markdownFile = path.join(paths.markdown, page.file);
+    const templateFile = path.join(paths.template, page.template);
+    const outputFile = path.join(paths.public, page.output);
+
+    const content = fs.readFileSync(markdownFile, 'utf8');
     const htmlContent = markdownIt().render(content);
 
-    const posicao = file.lastIndexOf('.');
-    const fileName = (posicao !== -1 ? file.substring(0, posicao) : file);
-    
     const replacements = {
-        title: 'Título',
+        title: page.title,
         content: htmlContent,
     };
     
@@ -37,9 +39,5 @@ markdownFiles.forEach(file => {
         (match, placeholder) => replacements[placeholder] || match
     );
     
-    fs.writeFileSync(
-        paths.public + '/' + fileName + '.html',
-        finalHtml,
-        'utf8'
-    );
+    fs.writeFileSync(outputFile, finalHtml, 'utf8');
 });

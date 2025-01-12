@@ -1,0 +1,28 @@
+{
+    "pages": [
+        {
+            "file": "file1.md",
+            "template": "template-alt.html",
+            "output": "page1.html",
+            "title": "Página 1"
+        },
+        {
+            "file": "file2.md",
+            "template": "template-alt.html",
+            "output": "page2.html",
+            "title": "Página 2"
+        },
+        {
+            "file": "file3.md",
+            "template": "template-alt.html",
+            "output": "page3.html",
+            "title": "Página 3"
+        },
+        {
+            "file": "file4.md",
+            "template": "template.html",
+            "output": "page4.html",
+            "title": "Página 4"
+        }
+    ]
+}
