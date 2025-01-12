@@ -14,7 +14,7 @@
         },
         {
             "file": "file3.md",
-            "template": "template-alt.html",
+            "template": "template.html",
             "output": "page3.html",
             "title": "Página 3"
         },
