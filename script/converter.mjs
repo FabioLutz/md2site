@@ -31,9 +31,17 @@ config.pages.forEach(page => {
     const content = fs.readFileSync(markdownFile, 'utf8');
     const htmlContent = markdownIt().render(content);
 
+    const outputDir = path.dirname(outputFile);
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+    }
+
+    const basePath = path.relative(outputDir, paths.public);
+
     const replacements = {
         title: page.title,
         content: htmlContent,
+        basePath: basePath ? `${basePath}` : '.',
     };
     
     const templateContent = fs.readFileSync(templateFile, 'utf8');

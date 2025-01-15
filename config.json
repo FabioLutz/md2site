@@ -7,21 +7,21 @@
             "title": "Página 1"
         },
         {
-            "file": "file2.md",
+            "file": "subdir/file2.md",
             "template": "template-alt.html",
-            "output": "page2.html",
+            "output": "subdir/page2.html",
             "title": "Página 2"
         },
         {
-            "file": "file3.md",
+            "file": "subdir/subsubdir/file3.md",
             "template": "template.html",
-            "output": "page3.html",
+            "output": "subdir/subsubdir/page3.html",
             "title": "Página 3"
         },
         {
-            "file": "file4.md",
+            "file": "other-subdir/file4.md",
             "template": "template.html",
-            "output": "page4.html",
+            "output": "other-subdir/page4.html",
             "title": "Página 4"
         }
     ]

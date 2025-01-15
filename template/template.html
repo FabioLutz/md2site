@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="{{basePath}}/style/style.css">
     <title>{{title}}</title>
 </head>
 <body>
@@ -13,10 +13,10 @@
     <main>
         <article>
             <nav>
-                <a href="page1.html">Página 1</a>
-                <a href="page2.html">Página 2</a>
-                <a href="page3.html">Página 3</a>
-                <a href="page4.html">Página 4</a>
+                <a href="{{basePath}}/page1.html">Página 1</a>
+                <a href="{{basePath}}/subdir/page2.html">Página 2</a>
+                <a href="{{basePath}}/subdir/subsubdir/page3.html">Página 3</a>
+                <a href="{{basePath}}/other-subdir/page4.html">Página 4</a>
             </nav>
             {{content}}
         </article>
