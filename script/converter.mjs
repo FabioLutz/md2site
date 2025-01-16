@@ -21,7 +21,13 @@ const paths = {
 const configContent = fs.readFileSync(paths.configFile);
 const config = JSON.parse(configContent.toString());
 
-fs.cpSync(paths.style, paths.publicStyle, { recursive: true });
+function copyFiles(src, dest) {
+    if (fs.existsSync(src)) {
+        fs.cpSync(src, dest, { recursive: true });
+    }
+}
+
+copyFiles(paths.style, paths.publicStyle);
 
 config.pages.forEach(page => {
     const markdownFile = path.join(paths.markdown, page.file);
