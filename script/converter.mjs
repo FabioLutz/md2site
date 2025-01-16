@@ -14,8 +14,10 @@ const paths = {
     markdown: path.join(rootPath, 'markdown'),
     template: path.join(rootPath, 'template'),
     style: path.join(rootPath, 'template', 'style'),
+    favicon: path.join(rootPath, 'template', 'favicon'),
     public: path.join(rootPath, 'public'),
     publicStyle: path.join(rootPath, 'public', 'style'),
+    publicFavicon: path.join(rootPath, 'public', 'favicon'),
 };
 
 const configContent = fs.readFileSync(paths.configFile);
@@ -28,6 +30,7 @@ function copyFiles(src, dest) {
 }
 
 copyFiles(paths.style, paths.publicStyle);
+copyFiles(paths.favicon, paths.publicFavicon);
 
 config.pages.forEach(page => {
     const markdownFile = path.join(paths.markdown, page.file);
