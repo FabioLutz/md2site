@@ -18,7 +18,7 @@ const paths = {
     favicon: path.join(rootPath, 'template', 'favicon'),
     public: path.join(rootPath, 'public'),
     publicImage: path.join(rootPath, 'public', 'image'),
-    publicStyle: path.join(rootPath, 'public', 'style'),
+    publicStyle: path.join(rootPath, 'public', 'style', 'template'),
     publicFavicon: path.join(rootPath, 'public', 'favicon'),
 };
 
