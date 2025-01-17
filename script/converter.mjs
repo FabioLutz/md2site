@@ -12,10 +12,12 @@ const paths = {
     script: path.join(rootPath, 'script'),
     configFile: path.join(rootPath, 'config.json'),
     markdown: path.join(rootPath, 'markdown'),
+    image: path.join(rootPath, 'markdown', 'image'),
     template: path.join(rootPath, 'template'),
     style: path.join(rootPath, 'template', 'style'),
     favicon: path.join(rootPath, 'template', 'favicon'),
     public: path.join(rootPath, 'public'),
+    publicImage: path.join(rootPath, 'public', 'image'),
     publicStyle: path.join(rootPath, 'public', 'style'),
     publicFavicon: path.join(rootPath, 'public', 'favicon'),
 };
@@ -31,6 +33,7 @@ function copyFiles(src, dest) {
 
 copyFiles(paths.style, paths.publicStyle);
 copyFiles(paths.favicon, paths.publicFavicon);
+copyFiles(paths.image, paths.publicImage);
 
 config.pages.forEach(page => {
     const markdownFile = path.join(paths.markdown, page.file);

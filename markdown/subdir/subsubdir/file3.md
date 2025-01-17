@@ -50,6 +50,10 @@ _Texto em itálico_
     2. Subitem 2
     7. Número 7
 
+# Imagem
+
+![icon pictures](../../image/Icon-pictures.png)
+
 # Citação
 
 > Citação
