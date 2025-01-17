@@ -14,12 +14,17 @@ const paths = {
     markdown: path.join(rootPath, 'markdown'),
     image: path.join(rootPath, 'markdown', 'image'),
     template: path.join(rootPath, 'template'),
-    style: path.join(rootPath, 'template', 'style'),
-    favicon: path.join(rootPath, 'template', 'favicon'),
+    templateStyle: path.join(rootPath, 'template', 'style'),
+    templateFavicon: path.join(rootPath, 'template', 'favicon'),
+    static: path.join(rootPath, 'static-html'),
+    staticStyle: path.join(rootPath, 'static-html', 'style'),
+    staticFavicon: path.join(rootPath, 'static-html', 'favicon'),
     public: path.join(rootPath, 'public'),
-    publicImage: path.join(rootPath, 'public', 'image'),
-    publicStyle: path.join(rootPath, 'public', 'style', 'template'),
+    publicStyle: path.join(rootPath, 'public', 'style'),
     publicFavicon: path.join(rootPath, 'public', 'favicon'),
+    publicImage: path.join(rootPath, 'public', 'image'),
+    publicTemplateStyle: path.join(rootPath, 'public', 'style', 'template'),
+    publicTemplateFavicon: path.join(rootPath, 'public', 'favicon', 'template'),
 };
 
 const configContent = fs.readFileSync(paths.configFile);
@@ -31,9 +36,12 @@ function copyFiles(src, dest) {
     }
 }
 
-copyFiles(paths.style, paths.publicStyle);
-copyFiles(paths.favicon, paths.publicFavicon);
+copyFiles(paths.templateStyle, paths.publicTemplateStyle);
+copyFiles(paths.templateFavicon, paths.publicTemplateFavicon);
 copyFiles(paths.image, paths.publicImage);
+copyFiles(paths.static, paths.public);
+copyFiles(paths.staticStyle, paths.publicStyle);
+copyFiles(paths.staticFavicon, paths.publicFavicon);
 
 config.pages.forEach(page => {
     const markdownFile = path.join(paths.markdown, page.file);
