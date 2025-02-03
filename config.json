@@ -23,6 +23,12 @@
             "template": "template.html",
             "output": "other-subdir/page4.html",
             "title": "Página 4"
+        },
+        {
+            "file": "file-katex.md",
+            "template": "template.html",
+            "output": "page-katex.html",
+            "title": "KaTeX"
         }
     ]
 }
